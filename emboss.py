@@ -37,10 +37,10 @@ if __name__ == "__main__":
     
     img = Image.open(path)
     img = emboss(img)
-    img.save(os.path.splitext(path)[0]+'.emboss.jpg', 'JPEG')
+    img.save(os.path.splitext(path)[0]+'.emboss.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))
     
 '''
     from PIL import ImageFilter

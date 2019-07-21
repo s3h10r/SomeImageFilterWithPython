@@ -21,14 +21,13 @@ def comic(img):
         
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             r, g, b = pix[w, h]
             
-            pix[w, h] = tuple(map(lambda i: min(255, i),
-                                  [abs(g - b + g + r) * r / 256,
-                                   abs(b - g + b + r) * r / 256,
-                                   abs(b - g + b + r) * r / 256]))
+            pix[w, h] = tuple([min(255, i) for i in [int(abs(g - b + g + r) * r / 256),
+                                   int(abs(b - g + b + r) * r / 256),
+                                   int(abs(b - g + b + r) * r / 256)]])
                 
     return img.convert('L')
 
@@ -47,4 +46,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.comic.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))

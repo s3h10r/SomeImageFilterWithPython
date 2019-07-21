@@ -19,8 +19,8 @@ def sepia(img):
 
     pix = img.load()
 
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             cr_p = pix[w, h] # 当前像素点
 
             R = (25756 * cr_p[0] + 50397 * cr_p[1] + 12386 * cr_p[2]) >> 16
@@ -56,4 +56,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.sepia.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

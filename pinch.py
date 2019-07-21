@@ -32,8 +32,8 @@ def pinch(img, degree, center=None):
     dst_img = Image.new("RGBA", (width, height))
     dst_pix = dst_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             # 当前像素点的偏移量
             offset_x, offset_y = w - center[0], h - center[1]
             
@@ -82,4 +82,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.pinch.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

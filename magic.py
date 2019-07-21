@@ -57,4 +57,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(fg_img_path)[0]+'.magic.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

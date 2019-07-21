@@ -24,8 +24,8 @@ def sketch(img, threshold):
     # 主计算方法
     # 根据经验，对当前像素点的灰度值与右下角比较
     # 差值大于阈值则绘制
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             if w == width-1 or h == height-1:
                 continue
             
@@ -63,4 +63,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.sketch.jpg', 'JPEG')
     
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

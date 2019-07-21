@@ -7,7 +7,7 @@ Created on 2011-6-27
 '''
 from PIL import Image
 
-from utils import Img2bin_arr, bin_arr2Img
+from .utils import Img2bin_arr, bin_arr2Img
 
 def paper_cut(img, threshold, bg_color, fg_color):
     '''
@@ -44,4 +44,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.papercut.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start) 
+    print('It all spends %f seconds time' % (end-start)) 

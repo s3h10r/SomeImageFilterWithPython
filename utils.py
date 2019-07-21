@@ -7,6 +7,7 @@ Created on 2011-6-24
 '''
 import operator
 from PIL import Image
+from functools import reduce
 
 class Matrix33(object):
     '''
@@ -40,8 +41,8 @@ class Matrix33(object):
         dst_img = Image.new("RGBA", (width, height))
         dst_pix = dst_img.load()
 
-        for w in xrange(width):
-            for h in xrange(height):
+        for w in range(width):
+            for h in range(height):
                 if w == 0 or w == width-1 \
                    or h == 0 or h == height-1:
                     continue
@@ -58,7 +59,7 @@ class Matrix33(object):
                             [pix[i, j][idx] * self.matrix33[j-h+1][i-w+1] \
                              for j in range(h-1, h+2) for i in range(w-1, w+2)]
                             )
-                        p = p / self.scale + self.offset
+                        p = int(p / self.scale + self.offset)
                         p = max(0, p)
                         p = min(255, p)
                         t_dst.append(p)
@@ -84,7 +85,7 @@ def Img2bin_arr(img, threshold):
     
     get_val = lambda p: 255 if p >= threshold else 0
         
-    return [[get_val(pix[w, h]) for w in xrange(width)] for h in xrange(height)]
+    return [[get_val(pix[w, h]) for w in range(width)] for h in range(height)]
 
 def bin_arr2Img(matrix, bg_color, fg_color):
     '''
@@ -103,7 +104,7 @@ def bin_arr2Img(matrix, bg_color, fg_color):
         elif len(color) == 4:
             return color
         else:
-            raise ValueError, 'len(color) cannot be %d' % len(color)
+            raise ValueError('len(color) cannot be %d' % len(color))
         
     bg_color = ensure_color(bg_color)
     fg_color = ensure_color(fg_color)
@@ -112,8 +113,8 @@ def bin_arr2Img(matrix, bg_color, fg_color):
     dst_img = Image.new("RGBA", (width, height))
     dst_pix = dst_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             if matrix[h][w] < 128:
                 dst_pix[w, h] = fg_color
             else:

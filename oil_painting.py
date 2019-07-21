@@ -36,16 +36,16 @@ def oil_painting(img, brush_size, roughness):
     dst_pix = dst_img.load()
     
     arr_len = roughness + 1
-    count = [0 for i in xrange(arr_len)]
-    A = [0 for i in xrange(arr_len)]
-    R = [0 for i in xrange(arr_len)]
-    G = [0 for i in xrange(arr_len)]
-    B = [0 for i in xrange(arr_len)]
+    count = [0 for i in range(arr_len)]
+    A = [0 for i in range(arr_len)]
+    R = [0 for i in range(arr_len)]
+    G = [0 for i in range(arr_len)]
+    B = [0 for i in range(arr_len)]
 
     def reset():
         # 将count, A, R, G, B元素重置0
         for arr in (count, A, R, G, B):
-            for i in xrange(arr_len):
+            for i in range(arr_len):
                 arr[i] = 0
     
     # 主计算过程
@@ -53,7 +53,7 @@ def oil_painting(img, brush_size, roughness):
     # (灰度值 * 粗糙度 / 255)出现最多的像素点
     # 并计算出这些像素点的A, R, G, B平均值值
     # 以达到油画效果
-    for w in xrange(width):
+    for w in range(width):
         left = w - brush_size
         if left < 0:
             left = 0
@@ -62,7 +62,7 @@ def oil_painting(img, brush_size, roughness):
         if right > width - 1:
             right = width - 1
             
-        for h in xrange(height):
+        for h in range(height):
             top = h - brush_size
             if top < 0:
                 top = 0
@@ -73,8 +73,8 @@ def oil_painting(img, brush_size, roughness):
                 
             reset()
             
-            for i in xrange(left, right+1):
-                for j in xrange(top, bottom+1):
+            for i in range(left, right+1):
+                for j in range(top, bottom+1):
                     intensity = int(gray_pix[i, j] * roughness / 255)
                     count[intensity] += 1
                     p = pix[i, j]
@@ -113,4 +113,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.oilpainting.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

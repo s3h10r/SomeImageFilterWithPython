@@ -21,8 +21,8 @@ def ice(img):
     width, height = img.size
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             r, g, b = pix[w, h]
             
             pix[w, h] = min(255, int(abs(r - g - b) * 3 / 2)), \
@@ -46,4 +46,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.ice.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))

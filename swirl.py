@@ -29,8 +29,8 @@ def swirl(img, degree):
     dst_img = Image.new("RGBA", (width, height))
     dst_pix = dst_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             offset_x = w - center[0]
             offset_y = h - center[1]
             
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.swirl.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

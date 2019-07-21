@@ -27,13 +27,13 @@ def mosaic(img, block_size):
     dst_img = Image.new("RGBA", (width, height))
     dst_pix = dst_img.load()
     
-    for w in xrange(0, width, block_size):
-        for h in xrange(0, height, block_size):
+    for w in range(0, width, block_size):
+        for h in range(0, height, block_size):
             r_sum, g_sum, b_sum = 0, 0, 0
             size = block_size ** 2
             
-            for i in xrange(w, min(w+block_size, width)):
-                for j in xrange(h, min(h+block_size, height)):
+            for i in range(w, min(w+block_size, width)):
+                for j in range(h, min(h+block_size, height)):
                     r_sum += pix[i, j][0]
                     g_sum += pix[i, j][1]
                     b_sum += pix[i, j][2]
@@ -42,8 +42,8 @@ def mosaic(img, block_size):
             g_ave = int(g_sum / size)
             b_ave = int(b_sum / size)
             
-            for i in xrange(w, min(w+block_size, width)):
-                for j in xrange(h, min(h+block_size, height)):
+            for i in range(w, min(w+block_size, width)):
+                for j in range(h, min(h+block_size, height)):
                     dst_pix[i, j] = r_ave, g_ave, b_ave, pix[w, h][3]
                     
     return dst_img
@@ -70,4 +70,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.mosaic.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

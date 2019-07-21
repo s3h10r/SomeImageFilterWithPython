@@ -18,7 +18,7 @@ def inosculate(bg_img, fg_img, transparency):
     '''
     
     # 宽和高取两个图像宽和高的最小值
-    width, height = tuple(map(min, zip(bg_img.size, fg_img.size)))
+    width, height = tuple(map(min, list(zip(bg_img.size, fg_img.size))))
     
     if fg_img.mode != "RGBA":
         fg_img = fg_img.convert("RGBA")
@@ -30,8 +30,8 @@ def inosculate(bg_img, fg_img, transparency):
     
     dst_pix = dst_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             if fg_pix[w, h][3] != 0:
                 # 如果前景像素点不透明
                 
@@ -68,4 +68,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(fg_img_path)[0]+'.inosculate.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

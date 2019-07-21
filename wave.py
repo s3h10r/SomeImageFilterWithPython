@@ -30,8 +30,8 @@ def wave(img, degree):
     
     pi2 = math.pi * 2
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             x = int(degree * math.sin(pi2 * h / 128.0)) + w
             y = int(degree * math.cos(pi2 * w / 128.0)) + h
             
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.wave.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

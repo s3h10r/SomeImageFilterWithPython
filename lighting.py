@@ -29,13 +29,13 @@ def lighting(img, power, center=None):
     
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             # 当前像素点到光源中心距离
             distance = int(math.sqrt((w - center[0]) ** 2 + (h - center[1]) ** 2))
             
             if distance < radius:
-                brightness = power * (radius - distance) / radius
+                brightness = int(power * (radius - distance) / radius)
                 # 光亮值和到光源中心的距离成反比
                 
                 r, g, b = pix[w, h]
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.lighting.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start) 
+    print('It all spends %f seconds time' % (end-start)) 

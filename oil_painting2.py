@@ -46,21 +46,21 @@ def oil_painting(img, brush_size, roughness):
     # (灰度值 * 粗糙度 / 255)出现最多的像素点
     # 并计算出这些像素点的A, R, G, B平均值值
     # 以达到油画效果
-    for w in xrange(width):
+    for w in range(width):
         left = max(w - brush_size, 0)
         right = min(w + brush_size, width - 1)
             
-        for h in xrange(height):
+        for h in range(height):
             top = max(h - brush_size, 0)
             bottom = min(h + brush_size, height - 1)
 
             intensity = lambda p: int(L(p) * roughness / 255)
             iter = groupby(
-                           (pix[i, j] for j in xrange(top, bottom+1) for i in xrange(left, right+1)),
+                           (pix[i, j] for j in range(top, bottom+1) for i in range(left, right+1)),
                            intensity
                            )
-            result = max((g for g in iter.values()), key=len)
-            RGBA = map(lambda l: int(sum(l) / len(l)), zip(*result))
+            result = max((g for g in list(iter.values())), key=len)
+            RGBA = [int(sum(l) / len(l)) for l in zip(*result)]
             
             dst_pix[w, h] = tuple(RGBA)
                             
@@ -103,4 +103,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.oilpainting2.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

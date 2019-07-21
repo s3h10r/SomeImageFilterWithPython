@@ -30,18 +30,18 @@ def pencil(img, threshold):
     # 主要将当前像素的R, G, B四个分量分别与周围的8个像素点的对应值的平均值比较
     # 如果都大于某阈值
     # 绘制该像素点，同时A分量等于当前像素点的alpha值即可
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             if w == 0 or w == width - 1 \
                or h == 0 or h == height - 1:
                 continue
             
             # 包含当前像素点的共九个像素点
-            around_wh_pixels = [pix[i, j][:3] for j in xrange(h-1, h+2) for i in xrange(w-1, w+2)]
+            around_wh_pixels = [pix[i, j][:3] for j in range(h-1, h+2) for i in range(w-1, w+2)]
             # 排除当前像素点
             exclude_wh_pixels = tuple(around_wh_pixels[:4] + around_wh_pixels[5:])
             # 计算周围8个像素点的R, G, B分量平均值      
-            RGB = map(lambda l: int(sum(l) / len(l)), zip(*exclude_wh_pixels))
+            RGB = [int(sum(l) / len(l)) for l in zip(*exclude_wh_pixels)]
             
             cr_p = pix[i, j] # 当前像素点
 
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.pencil.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

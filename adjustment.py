@@ -18,8 +18,8 @@ def invert(img):
     
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             r, g, b, a = pix[w, h]
             pix[w, h] = r ^ 0xFF, \
                         g ^ 0xFF, \
@@ -37,8 +37,8 @@ def interleaving(img):
     
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             if (w + h) % 2 == 0:
                 r, g, b, a = pix[w, h]
                 pix[w, h] = r ^ 0xFF, \
@@ -66,8 +66,8 @@ def contrast(img, degree):
     width, height = img.size
     pix = img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             r, g, b, a = pix[w, h]
             
             r = int(((r / 255.0 - 0.5) * _contrast + 0.5) * 255)

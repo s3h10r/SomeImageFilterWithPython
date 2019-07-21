@@ -32,4 +32,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.darkness.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))

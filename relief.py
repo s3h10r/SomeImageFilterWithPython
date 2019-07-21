@@ -8,7 +8,7 @@ Created on 2011-6-24
 import math
 from PIL import Image
 
-from utils import Matrix33
+from .utils import Matrix33
 
 def relief(img, angle):
     '''
@@ -62,4 +62,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.relief.png', 'PNG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print('It all spends %f seconds time' % (end-start))

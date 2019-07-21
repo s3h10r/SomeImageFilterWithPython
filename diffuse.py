@@ -26,8 +26,8 @@ def diffuse(img, degree):
     pix = img.load()
     dst_pix = dst_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             # 随机获取当前像素周围一随机点
             x = w + random.randint(-degree, degree)
             y = h + random.randint(-degree, degree)
@@ -62,4 +62,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.diffuse.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))

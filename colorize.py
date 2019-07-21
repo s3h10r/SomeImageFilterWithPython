@@ -28,8 +28,8 @@ def colorize(img, red, green, blue):
     pix = img.load()
     gray_pix = gray_img.load()
     
-    for w in xrange(width):
-        for h in xrange(height):
+    for w in range(width):
+        for h in range(height):
             gray = gray_pix[w, h]
             r, g, b = pix[w, h]
             
@@ -66,4 +66,4 @@ if __name__ == "__main__":
     img.save(os.path.splitext(path)[0]+'.colorize.jpg', 'JPEG')
 
     end = time.time()
-    print 'It all spends %f seconds time' % (end-start)
+    print(('It all spends %f seconds time' % (end-start)))
